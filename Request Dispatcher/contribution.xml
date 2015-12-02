@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdkExtension
+	xmlns="http://www.sap.com/bi/zen/sdk"
+	id="com.sap.connectivity.dispatcher"
+	title="Request Dispatcher"
+	version="1.0"
+	vendor="SAP">
+	<group title="Configuration" id="Configuration" /><group title="SDK Connectivity"
+		id="Connectivity" ></group>
+	<component id="Dispatcher" title="Request Dispatcher"
+		icon="res/icon.png" handlerType="div" tooltip="Request Dispatcher"
+		propertySheetPath="" group="Connectivity">
+		<jsInclude>res/js/component.js</jsInclude>
+		<cssInclude>res/css/component.css</cssInclude>
+		<property id="api" title="API Name" type="String"
+			group="Configuration" bindable="true" />
+		<property type="boolean" title="Visibility" id="visibility">
+		</property>
+		<property type="String" title="API Parameter List" id="paraList"
+			group="Configuration">
+		</property>
+		<property type="String" title="Send Request Method"
+			id="sendRequest" group="Configuration" visible="false">
+		</property>
+		<initialization>
+			<defaultValue property="LEFT_MARGIN">40</defaultValue>
+			<defaultValue property="TOP_MARGIN">40</defaultValue>
+			<defaultValue property="WIDTH">100</defaultValue>
+			<defaultValue property="HEIGHT">100</defaultValue>
+			<defaultValue property="api"></defaultValue>
+			<defaultValue property="visibility">true</defaultValue>
+		</initialization>
+	</component>
+</sdkExtension>

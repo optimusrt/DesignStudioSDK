@@ -1,0 +1,46 @@
+class com.sap.connectivity.dispatcher.Dispatcher extends Component {
+
+	/* Returns the API name. */
+	String getAPI() {*
+		return this.api;
+	*}
+
+	/* Sets the API name. */
+	void setAPI(/*API Name*/ String newAPI) {*
+		this.api = newAPI;
+	*}
+	
+	/* Returns the parameter list. */
+	String getParaList() {*
+		return this.paraList;
+	*}
+
+	/* Sets the parameter list. */
+	void setParaList(/*Parameter List String*/ String newParaList) {*
+		this.paraList = newParaList;
+	*}
+	
+	/*Sends the request.*/
+	void sendRequest() {*
+		if(this.api!==undefined && this.api!='' && this.api.indexOf('.')==-1){
+			var _apiSignature=this.api;
+			var paraObj=JSON.parse(this.paraList);
+			_apiSignature=_apiSignature+'(';
+			for(var i in paraObj){
+				if(typeof(paraObj[i])=='number'){
+					_apiSignature+=paraObj[i];
+				} else if(typeof(paraObj[i])=='string'){
+					_apiSignature=_apiSignature+'"'+paraObj[i]+'"';
+				} else {
+					//alert('Parameter type does not support');
+					return this;
+				}
+				_apiSignature+=',';
+			}
+			_apiSignature=_apiSignature.substring(0,_apiSignature.length-1);
+			_apiSignature+=")";
+			_apiSignature='window.top.'+_apiSignature;
+			this.sendRequest=_apiSignature;
+		}
+	*}
+}

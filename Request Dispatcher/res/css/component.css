@@ -1,0 +1,8 @@
+.visibleArea{
+	background-color:#dddddd;
+}
+
+.hideArea{
+	visibility:hidden;
+	background-color:#dddddd;
+}
